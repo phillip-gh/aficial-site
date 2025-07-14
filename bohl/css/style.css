@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -12,6 +18,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 /* Header und Navigation */
@@ -230,11 +237,11 @@ nav {
 
 /* Footer */
 footer {
-    background-color: #fff;
-    color: #2c3e50;
+    background-color: #1a1a1a;
+    color: #ffffff;
     padding: 2rem 0;
     margin-top: auto;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    border-top: 1px solid #3d3d3d;
 }
 
 .footer-content {
@@ -244,17 +251,30 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-content p {
+    color: #b3b3b3;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
 }
 
 .footer-links a {
-    color: #2c3e50;
+    color: #b3b3b3;
     text-decoration: none;
-    margin-left: 2rem;
+    font-size: 0.95rem;
     transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #3498db;
+    color: #4285f4;
 }
 
 /* Mobile Navigation */
@@ -321,8 +341,15 @@ footer {
         font-size: 1.1rem;
     }
 
-    .footer-sections {
-        grid-template-columns: 1fr;
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .footer-links {
+        justify-content: center;
     }
 
     .section h2, .about-section h2, .team-section h2 {
@@ -336,6 +363,25 @@ footer {
         margin-bottom: 2rem;
         padding: 0;
         line-height: 1.4;
+    }
+    
+    /* Verhindert horizontales Scrollen */
+    .section {
+        padding: 5rem 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    nav {
+        padding: 0 1rem;
+        width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -666,7 +712,25 @@ footer {
         width: 5px;
         height: 5px;
     }
+    
+    /* Zusätzliche Regeln für sehr kleine Bildschirme */
+    .hero h1 {
+        font-size: 2rem;
+        padding: 0 0.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        padding: 0 0.5rem;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
 }
+
+
 
 .carousel-arrow {
     position: absolute;

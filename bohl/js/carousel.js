@@ -71,6 +71,30 @@ class ReviewCarousel {
         return text.substring(0, limit).trim() + '...';
     }
     
+    // Neue Methode zum Zurücksetzen des Expand-Zustands
+    resetExpandState() {
+        const reviews = document.querySelectorAll('.review');
+        const reviewsContainer = document.querySelector('.reviews-container');
+        
+        reviews.forEach(review => {
+            const expandButton = review.querySelector('.expand-review');
+            const fullReview = review.querySelector('.full-review');
+            const truncatedReview = review.querySelector('.review-text');
+            
+            if (expandButton && fullReview && truncatedReview) {
+                // Setze auf den Standard-Zustand zurück (truncated anzeigen, full verstecken)
+                truncatedReview.style.display = 'block';
+                fullReview.style.display = 'none';
+                expandButton.textContent = 'Mehr';
+            }
+        });
+        
+        // Setze die Container-Höhe zurück
+        if (reviewsContainer) {
+            reviewsContainer.style.minHeight = '';
+        }
+    }
+    
     init() {
         this.renderCarousel();
         this.startAutoRotation();
@@ -166,10 +190,24 @@ class ReviewCarousel {
                         truncatedReview.style.display = 'none';
                         fullReview.style.display = 'block';
                         expandButton.textContent = 'Weniger';
+                        
+                        // Dynamische Höhenanpassung
+                        const reviewsContainer = reviewElement.closest('.reviews-container');
+                        if (reviewsContainer) {
+                            const newHeight = reviewElement.offsetHeight;
+                            reviewsContainer.style.minHeight = newHeight + 'px';
+                        }
                     } else {
                         truncatedReview.style.display = 'block';
                         fullReview.style.display = 'none';
                         expandButton.textContent = 'Mehr';
+                        
+                        // Höhe zurücksetzen
+                        const reviewsContainer = reviewElement.closest('.reviews-container');
+                        if (reviewsContainer) {
+                            const newHeight = reviewElement.offsetHeight;
+                            reviewsContainer.style.minHeight = newHeight + 'px';
+                        }
                     }
                 });
             }
@@ -198,6 +236,9 @@ class ReviewCarousel {
         const dots = document.querySelectorAll('.carousel-dot');
         const currentReview = reviews[this.currentIndex];
         const nextReview = reviews[index];
+        
+        // Reset expand state before navigation
+        this.resetExpandState();
         
         // Entferne alte Klassen
         reviews.forEach(review => {

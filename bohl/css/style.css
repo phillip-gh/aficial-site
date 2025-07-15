@@ -1857,6 +1857,8 @@ footer {
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
     }
+
+
 }
 
 .success-icon {
@@ -2145,26 +2147,45 @@ footer {
     margin-bottom: 30px;
 }
 
-.process-filter-btn {
-    padding: 10px 20px;
-    border: 2px solid var(--primary-color);
-    background-color: transparent;
-    color: var(--primary-color);
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
+.process-filters .license-filter-btn {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    touch-action: manipulation !important;
 }
 
-.process-filter-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
+.process-filters .license-filter-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-.process-filter-btn.active {
-    background-color: var(--primary-color);
-    color: white;
+.process-filters .license-filter-btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
 }
+
+/* Globale Verhinderung von Scroll-Verhalten in der process-section */
+.process-section {
+    scroll-behavior: auto !important;
+}
+
+.process-section * {
+    scroll-behavior: auto !important;
+}
+
+/* Verhindere alle möglichen Scroll-Events */
+.process-section button,
+.process-section .license-filter-btn {
+    scroll-margin: 0 !important;
+    scroll-padding: 0 !important;
+}
+
+
 
 /* Ensure smooth transitions for timeline visibility */
 .process-timeline {

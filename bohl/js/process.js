@@ -24,9 +24,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add click event listeners to filter buttons
     filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault(); // Verhindert Standard-Button-Verhalten
+            e.stopPropagation(); // Verhindert Event-Bubbling
+            
             const category = button.getAttribute('data-process-filter');
             filterProcesses(category);
+            
+            // Verhindert Fokus und Scrollen
+            button.blur();
+            
+            // Speichert die aktuelle Scroll-Position und stellt sie wieder her
+            const currentScrollY = window.scrollY;
+            setTimeout(() => {
+                window.scrollTo(0, currentScrollY);
+            }, 0);
+        });
+        
+        // Verhindert auch Fokus-Events
+        button.addEventListener('focus', (e) => {
+            e.preventDefault();
             button.blur();
         });
     });

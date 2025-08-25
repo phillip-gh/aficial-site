@@ -56,23 +56,73 @@ async function loadEvents() {
         const embeddedEvents = [
             {
                 "id": 1,
-                "title": "Ü30 LADIES EDITION",
+                "title": "FALLBACK MODUS_ Ü30 LADIES EDITION",
                 "description": "Ein besonderes Event für alle über 30. Genießen Sie entspannte Musik, gute Gespräche und eine angenehme Atmosphäre in unserem Club.",
                 "date": "2025-08-30",
                 "time": "22:00",
-                "image": "Images/Events/ue30Event.jpg",
+                "image": "Sources/Events/ue30Event.jpg",
                 "ticketUrl": "#",
                 "category": "UE30"
             },
             {
                 "id": 2,
-                "title": "Ü30 PARTY",
+                "title": "FALLBACK MODUS_ Ü30 PARTY",
                 "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
                 "date": "2025-08-09",
                 "time": "22:00",
-                "image": "Images/Events/ue30PartyEvent.jpg",
+                "image": "Sources/Events/ue30PartyEvent.jpg",
                 "ticketUrl": "#",
                 "category": "UE30 Party"
+            },
+            {
+                "id": 3,
+                "title": "FALLBACK MODUS_ Ü30 PARTY",
+                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
+                "date": "2025-08-09",
+                "time": "22:00",
+                "image": "Sources/Events/ue30PartyEvent.jpg",
+                "ticketUrl": "#",
+                "category": "UE30 Party"
+            },
+            {
+                "id": 4,
+                "title": "FALLBACK MODUS_ Ü30 PARTY",
+                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
+                "date": "2025-08-09",
+                "time": "22:00",
+                "image": "Sources/Events/ue30PartyEvent.jpg",
+                "ticketUrl": "#",
+                "category": "UE30 Party"
+            },
+            {
+                "id": 5,
+                "title": "FALLBACK MODUS_ Ü30 PARTY",
+                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
+                "date": "2025-08-09",
+                "time": "22:00",
+                "image": "Sources/Events/ue30PartyEvent.jpg",
+                "ticketUrl": "#",
+                "category": "UE30 Party"
+            },
+            {
+                "id": 6,
+                "title": "FALLBACK MODUS_ Ü30 PARTY",
+                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
+                "date": "2025-08-09",
+                "time": "22:00",
+                "image": "Sources/Events/ue30PartyEvent.jpg",
+                "ticketUrl": "#",
+                "category": "UE30 Party"
+            },
+            {
+                "id": 7,
+                "title": "FALLBACK MODUS_ Ü30 LADIES EDITION",
+                "description": "Ein besonderes Event für alle über 30. Genießen Sie entspannte Musik, gute Gespräche und eine angenehme Atmosphäre in unserem Club.",
+                "date": "2025-08-30",
+                "time": "22:00",
+                "image": "Sources/Events/ue30Event.jpg",
+                "ticketUrl": "#",
+                "category": "UE30"
             }
         ];
         
@@ -103,9 +153,8 @@ function displayEvents(events) {
         return `
             <div class="event-card">
                 <img src="${event.image}" alt="${event.title}" class="event-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop'">
+                <h3 class="event-title">${event.title}</h3>
                 <div class="event-content">
-                    <h3 class="event-title">${event.title}</h3>
-                    <p class="event-description">${event.description}</p>
                     <div class="event-date">
                         <div class="date-left">
                             <div class="date-day">${dateInfo.day}</div>
@@ -113,8 +162,7 @@ function displayEvents(events) {
                             <div class="date-weekday">${dateInfo.weekday}</div>
                         </div>
                         <div class="date-right">
-                            <div class="date-title">${event.title}</div>
-                            <div class="date-time">${event.time} Uhr</div>
+                            <div class="date-time">Einlass: ${event.time} Uhr</div>
                         </div>
                     </div>
                     <a href="lounge-reservierung.html" class="event-ticket">Lounge reservieren</a>
@@ -125,6 +173,11 @@ function displayEvents(events) {
 
     console.log('Setting innerHTML with events'); // Debug log
     eventsGrid.innerHTML = eventsHTML;
+    
+    // Initialize slider after events are loaded
+    setTimeout(() => {
+        initEventsSlider();
+    }, 500); // Increased delay to ensure all events are rendered
 }
 
 // Format date to German format
@@ -153,14 +206,7 @@ function formatDateForDisplay(dateString) {
     };
 }
 
-// Navbar scroll effect
-function handleNavbarScroll() {
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-    } else {
-        navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-    }
-}
+// Navbar scroll effect - REMOVED OLD FUNCTION
 
 // Smooth scroll for navigation links
 function initSmoothScroll() {
@@ -247,6 +293,58 @@ function initLazyLoading() {
     }
 }
 
+// FAQ Toggle Function
+function toggleFAQ(element) {
+    const faqItem = element.parentElement;
+    const faqAnswer = faqItem.querySelector('.faq-answer');
+    const isActive = faqAnswer.classList.contains('active');
+    
+    // Close all other FAQ items
+    document.querySelectorAll('.faq-answer').forEach(answer => {
+        answer.classList.remove('active');
+    });
+    
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.classList.remove('active');
+    });
+    
+    // Toggle current FAQ item
+    if (!isActive) {
+        faqAnswer.classList.add('active');
+        element.classList.add('active');
+    }
+}
+
+// Drink Category Toggle Function
+function toggleDrinkCategory(element) {
+    const drinkCategory = element.parentElement;
+    const drinkItems = drinkCategory.querySelector('.drink-items');
+    const isVisible = drinkItems.style.display !== 'none';
+    
+    // Toggle current category
+    if (isVisible) {
+        drinkItems.style.display = 'none';
+        element.classList.remove('active');
+    } else {
+        drinkItems.style.display = 'grid';
+        element.classList.add('active');
+    }
+}
+
+// Job Category Toggle Function
+function toggleJobCategory(categoryTitle) {
+    const jobDetails = categoryTitle.nextElementSibling;
+    const icon = categoryTitle.querySelector('i');
+    
+    if (jobDetails.style.display === 'none') {
+        jobDetails.style.display = 'block';
+        icon.style.transform = 'rotate(180deg)';
+    } else {
+        jobDetails.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+    }
+}
+
 // Initialize all functionality
 function init() {
     // Ensure page starts at top
@@ -274,14 +372,23 @@ function init() {
     // Initialize logo click handler
     initLogoClick();
     
-    // Add scroll event listener for navbar
-    window.addEventListener('scroll', handleNavbarScroll);
+    // Navbar scroll effect is handled by separate event listener below
     
     // Initialize intersection observer after events are loaded
     setTimeout(() => {
         initIntersectionObserver();
         initLazyLoading();
     }, 100);
+    
+    // Add resize listener for responsive slider
+    window.addEventListener('resize', function() {
+        // Debounce resize events
+        clearTimeout(window.resizeTimeout);
+        window.resizeTimeout = setTimeout(() => {
+            console.log('Window resized, reinitializing slider');
+            initEventsSlider();
+        }, 250);
+    });
 }
 
 // Wait for DOM to be ready
@@ -346,3 +453,190 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style); 
+
+// Navbar Scroll Effect - FIXED VERSION
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    // Set initial state
+    navbar.style.background = 'transparent';
+    navbar.style.backdropFilter = 'none';
+    
+    // Mobile Navigation Toggle
+    console.log('Setting up mobile navigation...');
+    console.log('navToggle:', navToggle);
+    console.log('navLinks:', navLinks);
+    
+    navToggle.addEventListener('click', function() {
+        console.log('Hamburger clicked!');
+        navToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+            console.log('Menu opened');
+        } else {
+            document.body.style.overflow = 'auto';
+            console.log('Menu closed');
+        }
+    });
+    
+    // Close mobile menu when clicking on a link
+    navLinks.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!navToggle.contains(event.target) && !navLinks.contains(event.target)) {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', function() {
+        if (window.scrollY === 0) {
+            navbar.style.background = 'transparent';
+            navbar.style.backdropFilter = 'none';
+        } else {
+            navbar.style.background = 'rgba(0, 0, 0, 0.5)';
+            navbar.style.backdropFilter = 'blur(15px)';
+        }
+    });
+}); 
+
+// Simple Events Slider - TWO BY TWO
+let currentSlideIndex = 0;
+
+// Initialize Events Slider
+function initEventsSlider() {
+    const eventsGrid = document.getElementById('eventsGrid');
+    const sliderDots = document.getElementById('sliderDots');
+    
+    if (!eventsGrid || !sliderDots) return;
+    
+    const eventCards = eventsGrid.querySelectorAll('.event-card');
+    const totalEvents = eventCards.length;
+    
+    console.log('Initializing slider with', totalEvents, 'events');
+    
+    // Generate dots for each event
+    generateSliderDots(totalEvents);
+    
+    // Update navigation buttons
+    updateSliderNavigation(totalEvents);
+    
+    // Set initial position
+    updateSliderPosition();
+}
+
+// Generate slider dots - responsive: 2 events per slide on desktop, 1 on mobile
+function generateSliderDots(totalEvents) {
+    const sliderDots = document.getElementById('sliderDots');
+    if (!sliderDots) return;
+    
+    sliderDots.innerHTML = '';
+    
+    // Responsive: 2 events per slide on desktop, 1 on mobile
+    const eventsPerSlide = window.innerWidth <= 768 ? 1 : 2;
+    const totalSlides = Math.ceil(totalEvents / eventsPerSlide);
+    
+    console.log('Generating dots for', totalSlides, 'slides (', eventsPerSlide, 'events per slide)');
+    
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `slider-dot ${i === 0 ? 'active' : ''}`;
+        dot.onclick = () => goToSlide(i);
+        sliderDots.appendChild(dot);
+    }
+}
+
+// Update slider position
+function updateSliderPosition() {
+    const eventsGrid = document.getElementById('eventsGrid');
+    if (!eventsGrid) return;
+    
+    // Move to show the current slide (2 events per slide)
+    const translateX = -(currentSlideIndex * 100);
+    
+    console.log('Moving to slide', currentSlideIndex, 'translateX:', translateX);
+    
+    eventsGrid.style.transform = `translateX(${translateX}%)`;
+    
+    // Update dots
+    updateSliderDots();
+    
+    // Update navigation
+    const eventCards = document.querySelectorAll('.event-card');
+    updateSliderNavigation(eventCards.length);
+}
+
+// Update slider dots
+function updateSliderDots() {
+    const dots = document.querySelectorAll('.slider-dot');
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlideIndex);
+    });
+}
+
+// Update slider navigation buttons
+function updateSliderNavigation(totalEvents) {
+    const prevBtn = document.querySelector('.slider-btn-prev');
+    const nextBtn = document.querySelector('.slider-btn-next');
+    
+    // Responsive: 2 events per slide on desktop, 1 on mobile
+    const eventsPerSlide = window.innerWidth <= 768 ? 1 : 2;
+    const totalSlides = Math.ceil(totalEvents / eventsPerSlide);
+    
+    if (prevBtn) prevBtn.disabled = currentSlideIndex === 0;
+    if (nextBtn) nextBtn.disabled = currentSlideIndex >= totalSlides - 1;
+    
+    console.log('Navigation updated:', { 
+        currentSlideIndex, 
+        totalEvents, 
+        totalSlides,
+        eventsPerSlide,
+        prevDisabled: currentSlideIndex === 0, 
+        nextDisabled: currentSlideIndex >= totalSlides - 1 
+    });
+}
+
+// Go to specific slide
+function goToSlide(slideIndex) {
+    const eventCards = document.querySelectorAll('.event-card');
+    const totalEvents = eventCards.length;
+    const eventsPerSlide = window.innerWidth <= 768 ? 1 : 2;
+    const totalSlides = Math.ceil(totalEvents / eventsPerSlide);
+    
+    currentSlideIndex = Math.max(0, Math.min(slideIndex, totalSlides - 1));
+    console.log('Going to slide:', { slideIndex, currentSlideIndex, totalSlides, totalEvents, eventsPerSlide });
+    
+    updateSliderPosition();
+}
+
+// Slide events function - responsive: 2 events per slide on desktop, 1 on mobile
+function slideEvents(direction) {
+    const eventCards = document.querySelectorAll('.event-card');
+    const totalEvents = eventCards.length;
+    const eventsPerSlide = window.innerWidth <= 768 ? 1 : 2;
+    const totalSlides = Math.ceil(totalEvents / eventsPerSlide);
+    
+    if (direction === 'prev' && currentSlideIndex > 0) {
+        currentSlideIndex--;
+    } else if (direction === 'next' && currentSlideIndex < totalSlides - 1) {
+        currentSlideIndex++;
+    }
+    
+    console.log('Sliding events:', { direction, currentSlideIndex, totalSlides, totalEvents, eventsPerSlide });
+    
+    updateSliderPosition();
+} 

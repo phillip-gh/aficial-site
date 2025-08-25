@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alle Events - EIGHT CLUB SEVEN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Sources/logo-seven-club.png" alt="8CLUB Logo" class="logo-img">
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#events" class="nav-link">EVENTS</a>
+                <a href="index.html#social-media" class="nav-link">SOZIALE MEDIEN</a>
+                <a href="index.html#getraenkekarte" class="nav-link">GETRÄNKEKARTE</a>
+                <a href="index.html#faq" class="nav-link">FAQ</a>
+                <a href="index.html#jobs" class="nav-link">JOBS</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="events-header">
+        <div class="container">
+            <h1 class="section-title">Alle Events</h1>
+            <p class="events-subtitle">Entdecke alle kommenden Events im EIGHT CLUB SEVEN</p>
+        </div>
+    </section>
+
+    <!-- All Events Grid -->
+    <section class="all-events">
+        <div class="container">
+            <div class="events-grid" id="allEventsGrid">
+                <!-- Events will be loaded dynamically -->
+                <div class="loading">Loading events...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home Button -->
+    <section class="back-home-section">
+        <div class="container">
+            <a href="index.html" class="back-home-btn">
+                <i class="fas fa-arrow-left"></i>
+                Zurück zur Startseite
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="Sources/logo-seven-club.png" alt="Club Seven Logo">
+                </div>
+                <div class="footer-links">
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EIGHT CLUB SEVEN. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load all events for the overview page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllEvents();
+        });
+
+        async function loadAllEvents() {
+            try {
+                const response = await fetch('events.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    displayAllEvents(data.events);
+                } else {
+                    // Fallback to embedded events
+                    const embeddedEvents = [
+                        {
+                            "id": 1,
+                            "title": "Ü30 LADIES EDITION",
+                            "description": "Ein besonderes Event für alle über 30. Genießen Sie entspannte Musik, gute Gespräche und eine angenehme Atmosphäre in unserem Club.",
+                            "date": "2025-08-30",
+                            "time": "22:00",
+                            "image": "Sources/Events/ue30Event.jpg",
+                            "ticketUrl": "#",
+                            "category": "UE30"
+                        },
+                        {
+                            "id": 2,
+                            "title": "Ü30 PARTY",
+                            "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
+                            "date": "2025-08-09",
+                            "time": "22:00",
+                            "image": "Sources/Events/ue30PartyEvent.jpg",
+                            "ticketUrl": "#",
+                            "category": "UE30 Party"
+                        },
+                        {
+                            "id": 3,
+                            "title": "SUMMER VIBES",
+                            "description": "Sommerfeeling pur! Entspannte Atmosphäre mit den besten Sommerhits und erfrischenden Cocktails.",
+                            "date": "2025-07-26",
+                            "time": "22:00",
+                            "image": "Sources/Events/ue30Event.jpg",
+                            "ticketUrl": "#",
+                            "category": "Summer"
+                        },
+                        {
+                            "id": 4,
+                            "title": "LATIN NIGHT",
+                            "description": "Heiße Rhythmen und lateinamerikanische Klänge! Tanzen Sie den Abend zu Salsa, Bachata und Merengue.",
+                            "date": "2025-07-19",
+                            "time": "22:00",
+                            "image": "Sources/Events/ue30PartyEvent.jpg",
+                            "ticketUrl": "#",
+                            "category": "Latin"
+                        },
+                        {
+                            "id": 5,
+                            "title": "ROCK NIGHT",
+                            "description": "Rock 'n' Roll! Die besten Rock-Klassiker und moderne Rock-Hits für einen unvergesslichen Abend.",
+                            "date": "2025-07-12",
+                            "time": "22:00",
+                            "image": "Sources/Events/ue30Event.jpg",
+                            "ticketUrl": "#",
+                            "category": "Rock"
+                        },
+                        {
+                            "id": 6,
+                            "title": "CHILL OUT EVENING",
+                            "description": "Entspannte Lounge-Atmosphäre mit Chill-Out-Musik und exklusiven Cocktails.",
+                            "date": "2025-07-05",
+                            "time": "22:00",
+                            "image": "Sources/Events/ue30PartyEvent.jpg",
+                            "ticketUrl": "#",
+                            "category": "Chill"
+                        }
+                    ];
+                    displayAllEvents(embeddedEvents);
+                }
+            } catch (error) {
+                console.error('Error loading events:', error);
+                // Show fallback message
+                document.getElementById('allEventsGrid').innerHTML = '<div class="no-events">Events konnten nicht geladen werden. Bitte versuchen Sie es später erneut.</div>';
+            }
+        }
+
+        function displayAllEvents(events) {
+            const eventsGrid = document.getElementById('allEventsGrid');
+            
+            if (!events || events.length === 0) {
+                eventsGrid.innerHTML = '<div class="no-events">Keine Events verfügbar.</div>';
+                return;
+            }
+
+            const eventsHTML = events.map((event, index) => {
+                const dateInfo = formatDateForDisplay(event.date);
+                return `
+                    <div class="event-card">
+                        <img src="${event.image}" alt="${event.title}" class="event-image" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop'">
+                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-content">
+                            <p class="event-description">${event.description}</p>
+                            <div class="event-date">
+                                <div class="date-left">
+                                    <div class="date-day">${dateInfo.day}</div>
+                                    <div class="date-month">${dateInfo.month}</div>
+                                    <div class="date-weekday">${dateInfo.weekday}</div>
+                                </div>
+                                <div class="date-right">
+                                    <div class="date-title">${event.title}</div>
+                                    <div class="date-time">Einlass: ${event.time} Uhr</div>
+                                </div>
+                            </div>
+                            <a href="lounge-reservierung.html" class="event-ticket">Lounge reservieren</a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            eventsGrid.innerHTML = eventsHTML;
+        }
+
+        function formatDateForDisplay(dateString) {
+            const date = new Date(dateString);
+            
+            const weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+            const months = ['JAN', 'FEB', 'MÄR', 'APR', 'MAI', 'JUN', 'JUL', 'AUG', 'SEP', 'OKT', 'NOV', 'DEZ'];
+            
+            return {
+                day: date.getDate().toString().padStart(2, '0'),
+                month: months[date.getMonth()],
+                weekday: weekdays[date.getDay()].toUpperCase()
+            };
+        }
+    </script>
+</body>
+</html> 

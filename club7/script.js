@@ -54,76 +54,96 @@ async function loadEvents() {
         // If JSON loading failed, use embedded events as fallback
         console.log('JSON loading failed, using embedded events as fallback'); // Debug log
         const embeddedEvents = [
-            {
-                "id": 1,
-                "title": "FALLBACK MODUS_ Ü30 LADIES EDITION",
-                "description": "Ein besonderes Event für alle über 30. Genießen Sie entspannte Musik, gute Gespräche und eine angenehme Atmosphäre in unserem Club.",
-                "date": "2025-08-30",
-                "time": "22:00",
-                "image": "Sources/Events/ue30Event.jpg",
-                "ticketUrl": "#",
-                "category": "UE30"
-            },
-            {
-                "id": 2,
-                "title": "FALLBACK MODUS_ Ü30 PARTY",
-                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
-                "date": "2025-08-09",
-                "time": "22:00",
-                "image": "Sources/Events/ue30PartyEvent.jpg",
-                "ticketUrl": "#",
-                "category": "UE30 Party"
-            },
-            {
-                "id": 3,
-                "title": "FALLBACK MODUS_ Ü30 PARTY",
-                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
-                "date": "2025-08-09",
-                "time": "22:00",
-                "image": "Sources/Events/ue30PartyEvent.jpg",
-                "ticketUrl": "#",
-                "category": "UE30 Party"
-            },
-            {
-                "id": 4,
-                "title": "FALLBACK MODUS_ Ü30 PARTY",
-                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
-                "date": "2025-08-09",
-                "time": "22:00",
-                "image": "Sources/Events/ue30PartyEvent.jpg",
-                "ticketUrl": "#",
-                "category": "UE30 Party"
-            },
-            {
-                "id": 5,
-                "title": "FALLBACK MODUS_ Ü30 PARTY",
-                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
-                "date": "2025-08-09",
-                "time": "22:00",
-                "image": "Sources/Events/ue30PartyEvent.jpg",
-                "ticketUrl": "#",
-                "category": "UE30 Party"
-            },
-            {
-                "id": 6,
-                "title": "FALLBACK MODUS_ Ü30 PARTY",
-                "description": "Die große UE30 Party! Feiern Sie mit Gleichgesinnten in einer exklusiven Atmosphäre. Live-Musik, Cocktails und unvergessliche Momente.",
-                "date": "2025-08-09",
-                "time": "22:00",
-                "image": "Sources/Events/ue30PartyEvent.jpg",
-                "ticketUrl": "#",
-                "category": "UE30 Party"
-            },
-            {
-                "id": 7,
-                "title": "FALLBACK MODUS_ Ü30 LADIES EDITION",
-                "description": "Ein besonderes Event für alle über 30. Genießen Sie entspannte Musik, gute Gespräche und eine angenehme Atmosphäre in unserem Club.",
-                "date": "2025-08-30",
-                "time": "22:00",
-                "image": "Sources/Events/ue30Event.jpg",
-                "ticketUrl": "#",
-                "category": "UE30"
-            }
+              {
+      "id": 1,
+      "title": "Ü30 Party",
+      "description": "",
+      "date": "2025-09-13",
+      "time": "22:00",
+      "image": "Sources/Events/A_13-09_Ü30_22.jpg",
+      "ticketUrl": "#",
+      "category": "Ü30"
+    },
+    {
+      "id": 2,
+      "title": "ДИСКОТЕКА Party",
+      "description": "",
+      "date": "2024-09-20",
+      "time": "23:00",
+      "image": "Sources/Events/B_20-09_ДИСКОТЕКА_23.jpeg",
+      "ticketUrl": "#",
+      "category": "Russian"
+    },
+    {
+      "id": 3,
+      "title": "Ü30 Ladies Edition",
+      "description": "",
+      "date": "2025-09-27",
+      "time": "22:00",
+      "image": "Sources/Events/C_27-09_Ü30LadiesEdition_22.png",
+      "ticketUrl": "#",
+      "category": "Ü30"
+    },
+    {
+      "id": 4,
+      "title": "Old School",
+      "description": "",
+      "date": "2024-10-02",
+      "time": "22:00",
+      "image": "Sources/Events/D_02-10_OldSchool_22.jpg",
+      "ticketUrl": "#",
+      "category": "Ü30"
+    },
+    {
+      "id": 5,
+      "title": "Back To 80s",
+      "description": "",
+      "date": "2025-10-04",
+      "time": "22:00",
+      "image": "Sources/Events/E_04-10_BackTo80s_22.png",
+      "ticketUrl": "#",
+      "category": "80s"
+    },
+    {
+      "id": 6,
+      "title": "Ü30 Party",
+      "description": "",
+      "date": "2025-10-11",
+      "time": "22:00",
+      "image": "Sources/Events/F_11-10_Ü30Party_22.png",
+      "ticketUrl": "#",
+      "category": "Ü30"
+    },
+    {
+      "id": 7,
+      "title": "Ü50 Party",
+      "description": "",
+      "date": "2025-10-18",
+      "time": "21:00",
+      "image": "Sources/Events/G_18-10_Ü50Party_21.png",
+      "ticketUrl": "#",
+      "category": "Ü50"
+    },
+    {
+      "id": 8,
+      "title": "Ü30 Halloween Edition",
+      "description": "",
+      "date": "2025-10-25",
+      "time": "23:00",
+      "image": "Sources/Events/H_25-10_Ü30HalloweenEdition_23.jpg",
+      "ticketUrl": "#",
+      "category": "Ü30"
+    },
+    {
+      "id": 9,
+      "title": "Halloween Party",
+      "description": "",
+      "date": "2025-10-31",
+      "time": "22:00",
+      "image": "Sources/Events/I_31-10_HalloweenParty_22.png",
+      "ticketUrl": "#",
+      "category": "Halloween"
+    }
         ];
         
         console.log('Using embedded events:', embeddedEvents.length, 'events'); // Debug log
@@ -402,24 +422,42 @@ if (document.readyState === 'loading') {
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.querySelector('.hero-video');
     if (video) {
-        // Try multiple video sources if one fails
-        const videoSources = [
+        // Primary video source (Dropbox)
+        const primaryVideoSource = 'https://www.dropbox.com/scl/fi/3pxj7brbcowhlsohpa2z8/HeroVideo.m4v?rlkey=zweetvvak34i9f8ajtdgrotkv&st=rw3sbjiz&raw=1';
+        
+        // Fallback video sources if primary fails
+        const fallbackVideoSources = [
             'https://static.videezy.com/system/resources/previews/000/000/168/original/Record.mp4',
             'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
             'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4'
         ];
         
         let currentSourceIndex = 0;
+        let hasTriedPrimary = false;
+        
+        // Set the primary video source
+        video.src = primaryVideoSource;
+        video.load();
         
         video.addEventListener('error', function() {
+            console.log('Video failed to load, trying fallback sources...');
+            
+            if (!hasTriedPrimary) {
+                // First try the primary source
+                hasTriedPrimary = true;
+                return;
+            }
+            
             currentSourceIndex++;
-            if (currentSourceIndex < videoSources.length) {
-                // Try next video source
-                this.src = videoSources[currentSourceIndex];
+            if (currentSourceIndex < fallbackVideoSources.length) {
+                // Try next fallback video source
+                console.log('Trying fallback video source:', currentSourceIndex + 1);
+                this.src = fallbackVideoSources[currentSourceIndex];
                 this.load();
                 this.play();
             } else {
                 // All videos failed, use background image fallback
+                console.log('All video sources failed, using background image fallback');
                 this.style.display = 'none';
                 const hero = document.querySelector('.hero');
                 hero.style.backgroundImage = 'url(https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&h=1080&fit=crop)';
@@ -428,11 +466,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Also handle load event to ensure video plays
+        // Handle successful video load
         video.addEventListener('loadeddata', function() {
+            console.log('Video loaded successfully');
             this.play().catch(function(error) {
                 console.log('Video autoplay failed:', error);
+                // If autoplay fails, try to play on user interaction
+                document.addEventListener('click', function playVideo() {
+                    video.play().then(() => {
+                        document.removeEventListener('click', playVideo);
+                    });
+                }, { once: true });
             });
+        });
+        
+        // Handle video can play event
+        video.addEventListener('canplay', function() {
+            console.log('Video can start playing');
         });
     }
 });
